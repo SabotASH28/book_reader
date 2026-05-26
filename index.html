@@ -84,7 +84,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="card-action-btn" data-book="duelyant">Читать готовые главы</button>
+                        <button class="card-action-btn" data-book="duelyant">Список глав</button>
                     </div>
                 </section>
             </div>
@@ -96,7 +96,16 @@
             <div id="reader-progress" class="progress-bar"></div>
         </div>
 
-        <aside class="reader-sidebar">
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle-btn" aria-label="Открыть настройки и главы">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+                <path fill="currentColor" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+            </svg>
+            <span>Меню</span>
+        </button>
+
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+        <aside id="reader-sidebar" class="reader-sidebar">
             <button id="close-reader" class="back-to-lib-btn">
                 <span class="arrow">←</span> На главную
             </button>
