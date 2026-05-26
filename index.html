@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Александр Ларин — Книги и рассказы</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+
+    <div id="main-screen">
+        <header class="site-header">
+            <div class="logo">АЛЕКСАНДР ЛАРИН</div>
+            <div class="header-controls">
+                <a href="https://t.me/your_channel" target="_blank" class="tg-button" aria-label="Telegram канал">
+                    <svg viewBox="0 0 24 24" width="20" height="20">
+                        <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-1-.65-.35-1 .22-1.62.15-.15 2.7-2.46 2.75-2.67.01-.03.01-.15-.06-.21-.07-.06-.17-.04-.25-.02-.11.02-1.83 1.16-5.16 3.41-.49.33-.93.5-1.33.49-.44-.01-1.29-.25-1.92-.45-.77-.25-1.39-.39-1.34-.83.03-.23.35-.46.97-.71 3.8-1.65 6.34-2.74 7.61-3.27 3.62-1.5 4.37-1.76 4.86-1.77.11 0 .35.03.51.16.13.1.17.24.19.34.02.06.02.19.01.27z"/>
+                    </svg>
+                </a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Сменить тему">
+                    <span class="toggle-track">
+                        <span class="toggle-thumb"></span>
+                    </span>
+                </button>
+            </div>
+        </header>
+
+        <main class="main-container">
+            <section class="hero">
+                <h1>Книги и рассказы</h1>
+            </section>
+
+            <div class="content-grid">
+                <section class="column finished-column">
+                    <h2>ЗАВЕРШЁННОЕ</h2>
+                    <div class="books-list">
+                        <div class="book-row" style="--bg-image: url('mayak.jpg');">
+                            <div class="book-row-background"></div>
+                            <div class="book-row-content">
+                                <div class="book-row-main">
+                                    <div class="book-row-info">
+                                        <span class="book-row-title">Под маяком</span>
+                                        <span class="book-row-type">(Роман)</span>
+                                    </div>
+                                    <button class="read-btn" data-book="mayak">Читать</button>
+                                </div>
+                                <div class="book-description">
+                                    <p>Погружение в мир одиночества, загадок и психологической борьбы.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="book-row" style="--bg-image: url('taiga.png');">
+                            <div class="book-row-background"></div>
+                            <div class="book-row-content">
+                                <div class="book-row-main">
+                                    <div class="book-row-info">
+                                        <span class="book-row-title">Тайга</span>
+                                        <span class="book-row-type">(Рассказ)</span>
+                                    </div>
+                                    <button class="read-btn" data-book="taiga">Читать</button>
+                                </div>
+                                <div class="book-description">
+                                    <p>Атмосферный психологический триллер о первобытном страхе, одиночестве и попытке убежать от реальности.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="column ongoing-column">
+                    <h2>В ПРОЦЕССЕ</h2>
+                    <div class="ongoing-card">
+                        <div class="card-badge">В ПРОЦЕССЕ</div>
+                        <div class="card-cover-container">
+                            <img src="duelyant_cover.png" class="card-cover-img" alt="Обложка романа Дуэлянт">
+                            <div class="card-overlay">
+                                <div class="card-meta">
+                                    <h3 class="card-title">ДУЭЛЯНТ</h3>
+                                    <p class="card-type">Роман</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="card-action-btn" data-book="duelyant">Список глав</button>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div id="reader-screen" class="reader-screen hidden">
+        <div class="progress-bar-container">
+            <div id="reader-progress" class="progress-bar"></div>
+        </div>
+
+        <aside class="reader-sidebar">
+            <button id="close-reader" class="back-to-lib-btn">
+                <span class="arrow">←</span> На главную
+            </button>
+            
+            <hr class="sidebar-divider">
+            
+            <div class="reader-settings">
+                <div class="setting-group">
+                    <span class="setting-label">Шрифт</span>
+                    <div class="settings-buttons">
+                        <button id="font-serif-btn" class="setting-btn active-setting">Serif</button>
+                        <button id="font-sans-btn" class="setting-btn">Sans</button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <span class="setting-label">Размер</span>
+                    <div class="settings-buttons">
+                        <button id="size-decrease" class="setting-btn">А-</button>
+                        <button id="size-increase" class="setting-btn">А+</button>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="sidebar-divider">
+
+            <div class="chapters-menu-wrapper">
+                <span class="sidebar-label">Главы:</span>
+                <nav id="chapters-menu" class="chapters-menu"></nav>
+            </div>
+        </aside>
+
+        <div class="reader-content-area">
+            <article class="reader-text-wrapper font-serif" id="reader-text-container">
+                <header class="reader-text-header">
+                    <div class="reader-header-meta-block">
+                        <span id="reader-book-title" class="reader-meta-title">Название книги</span>
+                        <h2 id="reader-chapter-title" class="reader-chapter-title">Глава 1</h2>
+                    </div>
+                    <button id="reader-theme-toggle" class="theme-toggle" aria-label="Сменить тему">
+                        <span class="toggle-track">
+                            <span class="toggle-thumb"></span>
+                        </span>
+                    </button>
+                </header>
+                
+                <div id="reader-paragraphs" class="reader-paragraphs"></div>
+
+                <footer class="reader-text-footer">
+                    <div class="footer-nav-buttons">
+                        <button id="prev-chapter-btn" class="nav-chapter-link">← Предыдущая глава</button>
+                        <button id="next-chapter-btn" class="nav-chapter-link">Следующая глава →</button>
+                    </div>
+                </footer>
+            </article>
+        </div>
+    </div>
+
+    <div class="custom-cursor"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
