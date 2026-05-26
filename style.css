@@ -423,7 +423,7 @@ body.light-theme .card-action-btn { background-color: #222222; color: #fff; }
 }
 
 /* ==========================================================================
-   8. КАСТОМНЫЙ КУРСОР (ЖЁСТКАЯ СТАБИЛИЗАЦИЯ И СИНХРОНИЗАЦИЯ С ТЕМАМИ)
+   8. КАСТОМНЫЙ КУРСОР (ТОТАЛЬНАЯ ИНВЕРСИЯ)
    ========================================================================== */
 @media (min-width: 851px) {
     body, a, button, .book-row, .theme-toggle, .card-action-btn, .setting-btn, .nav-chapter-link, .chapters-menu button {
@@ -433,14 +433,14 @@ body.light-theme .card-action-btn { background-color: #222222; color: #fff; }
     .custom-cursor {
         width: 10px;
         height: 10px;
-        background-color: #ffffff; 
+        background-color: #ffffff !important; /* Всегда чисто белый, чтобы инверсия была максимальной */
         border-radius: 50%;
         position: fixed;
         top: 0;
         left: 0;
         pointer-events: none; 
         z-index: 99999; 
-        mix-blend-mode: difference; 
+        mix-blend-mode: difference !important; /* Жестко держим режим инверсии на всех элементах */
         transform: translate(-50%, -50%) scale(0); 
         transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
     }
@@ -449,12 +449,13 @@ body.light-theme .card-action-btn { background-color: #222222; color: #fff; }
         transform: translate(-50%, -50%) scale(1);
     }
 
-    .custom-cursor.visible.active { transform: translate(-50%, -50%) scale(0.5); }
+    .custom-cursor.visible.active { 
+        transform: translate(-50%, -50%) scale(0.5); 
+    }
     
+    /* При наведении только увеличиваем круг, не меняя его цвет и режим смешивания */
     .custom-cursor.visible.hovered { 
-        transform: translate(-50%, -50%) scale(2.2); 
-        background-color: var(--accent-color);
-        mix-blend-mode: normal; 
+        transform: translate(-50%, -50%) scale(2.5); 
     }
 }
 
