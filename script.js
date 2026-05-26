@@ -185,6 +185,8 @@ function loadChapterContent(targetScroll = 0) {
     const oldScript = document.getElementById('temporary-text-script');
     if (oldScript) oldScript.remove();
     
+    window.CURRENT_CHAPTER_TEXT = '';
+    
     const script = document.createElement('script');
     script.id = 'temporary-text-script';
     script.src = fileSrc;
@@ -335,9 +337,7 @@ const cursor = document.querySelector('.custom-cursor');
 
 if (cursor) {
     document.addEventListener('mousemove', (e) => {
-        // Добавляем класс видимости при первом движении мыши без условий
         cursor.classList.add('visible');
-        
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
     });
@@ -348,14 +348,39 @@ if (cursor) {
 
 function updateCursorListeners() {
     if (!cursor) return;
-    const interactiveElements = document.querySelectorAll('a, button, .book-row, .theme-toggle');
+    const interactiveElements = document.querySelectorAll('a, button, .book-row, .theme-toggle, .setting-btn, .nav-chapter-link');
     interactiveElements.forEach(el => {
         el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
         el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
     });
 }
 
-// Запускаем слушатели событий сразу при старте страницы
+// ==========================================================================
+// 8. ЛОГИКА МОБИЛЬНОГО МЕНЮ В ЧИТАЛКЕ
+// ==========================================================================
+const mobileMenuBtn = document.getElementById('mobile-menu-toggle');
+const readerSidebar = document.getElementById('reader-sidebar');
+const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+function toggleMobileMenu() {
+    readerSidebar.classList.toggle('menu-open');
+    sidebarOverlay.classList.toggle('active');
+}
+
+function closeMobileMenu() {
+    readerSidebar.classList.remove('menu-open');
+    sidebarOverlay.classList.remove('active');
+}
+
+if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeMobileMenu);
+
+document.getElementById('chapters-menu').addEventListener('click', (e) => {
+    if (e.target.tagName === 'BUTTON') {
+        closeMobileMenu();
+    }
+});
+
 window.addEventListener('DOMContentLoaded', () => {
     updateCursorListeners();
     const activeBookId = localStorage.getItem('activeBookId');
