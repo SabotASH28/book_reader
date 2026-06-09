@@ -21,7 +21,7 @@ const BOOKS_DATA = {
         filePrefix: "duelyant",
         chapterLabel: "Глава",
         useRoman: true,
-        totalChapters: 6
+        totalChapters: 7
     }
 };
 
